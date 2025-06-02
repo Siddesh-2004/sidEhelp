@@ -1,4 +1,4 @@
-class apiResponses{
+export class apiResponses{
     constructor(statusCode, data = null, message = 'Success', errors = []) {
         this.statusCode = statusCode; // HTTP status code for the response
         this.success = statusCode < 400; // Indicates that the operation was successful
