@@ -8,14 +8,14 @@ const VocabularyBuilder = () => {
         {/* Main Content */}
         <div className="flex items-center justify-center p-2 pb-50 bg-white">
           {/* Previous Button */}
-          <button className="flex items-center justify-center w-20 h-12 rounded-full bg-gradient-to-br from-black to-violet-900  shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 mr-6">
+          <button className="flex items-center justify-center w-20 h-12 rounded-full bg-gradient-to-br from-gray-900 via-blue-900 to-black shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 mr-6">
           <svg className="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
 </svg>
 
           </button>
 
-          <div className="flex flex-col max-w-2xl w-full mx-4 bg-gradient-to-br from-black to-violet-900  rounded-lg shadow-lg">
+          <div className="flex flex-col max-w-2xl w-full mx-4 bg-gradient-to-br from-gray-900 via-blue-900 to-black  rounded-lg shadow-lg">
             {/* Word of the Day Header */}
             <h2 className="text-white text-2xl font-bold leading-tight px-4 text-center pb-3 pt-5" style={{fontFamily: '"Dancing Script", "Noto Sans", sans-serif',fontSize: '45px'}}>
                 Welcome to the Vocabulary Builder
@@ -88,7 +88,7 @@ const VocabularyBuilder = () => {
           </div>
 
           {/* Next Button */}
-          <button className="flex items-center justify-center w-20 h-12 rounded-full bg-gradient-to-br from-black to-violet-900  text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 ml-6">
+          <button className="flex items-center justify-center w-20 h-12 rounded-full bg-gradient-to-br from-gray-900 via-blue-900 to-black  text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 ml-6">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

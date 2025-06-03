@@ -1,5 +1,6 @@
 import React from 'react'
-
+import Feature from '../components/Feature';
+import { Link } from 'react-router-dom';
 function Home() {
  return(
     <div>
@@ -24,11 +25,13 @@ function Home() {
                         sidEhelp is your all-in-one academic companion, offering tools to streamline your studies, enhance your learning, and achieve your goals.
                       </h2>
                     </div>
-                    <button
-                      className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-black text-gray-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                    >
-                      <span className="truncate">Get Started</span>
-                    </button>
+                   <button
+  className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-gradient-to-r from-black via-gray-900 to-slate-900 hover:from-gray-900 hover:via-slate-800 hover:to-black text-gray-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] transition-all duration-300 hover:shadow-lg hover:shadow-black/30 transform hover:scale-105 border border-gray-700 hover:border-gray-600"
+>
+<Link to="/feature" className="flex items-center justify-center w-full h-full">
+  <span className="truncate">Get Started</span>
+</Link>
+</button>
                   </div>
                 </div>
               </div>
@@ -43,7 +46,7 @@ function Home() {
                     sidEhelp provides a suite of tools designed to support students at every stage of their academic journey.
                   </p>
                 </div>
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-0">
+                {/* <div className="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-0">
                   <div className="flex flex-1 gap-3 rounded-lg border border-[#d3dde3] bg-gradient-to-br from-black to-violet-900  p-4 flex-col cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-blue-200 hover:border-blue-400 hover:shadow-lg" style={{color: 'white'}}>
                     <div className="text-[#101519]" data-icon="File" data-size="24px" data-weight="regular">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="white" viewBox="0 0 256 256">
@@ -96,7 +99,8 @@ function Home() {
                       <p className="text-[#5a778c] text-sm font-normal leading-normal">Organize your study schedule, track your progress, and stay on top of your coursework.</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
+                <Feature />
               </div>
             </div>
           </div>
