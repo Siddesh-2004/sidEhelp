@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useAuth } from '../hooks/useAuthHook';
 
-const AppInitializer = ({ children, isAuthenticated }) => {
-  const { checkAuth, isLoading, isInitialized } = useAuth();
-  const [minLoadingTime, setMinLoadingTime] = useState(true);
+const AppInitializer = ({ children ,isAuthenticated}) => {
+    const { checkAuth, isLoading, isInitialized } = useAuth();
 
-  useEffect(() => {
-    checkAuth();
-    const timer = setTimeout(() => setMinLoadingTime(false), 3000);
-    return () => clearTimeout(timer);
-  }, [isAuthenticated]);
+    useEffect(() => {
+        // Check authentication status when app loads
+        checkAuth();
+    }, [isAuthenticated]);
 
   if ((!isInitialized && isLoading) || minLoadingTime) {
     return (
@@ -151,7 +149,7 @@ const AppInitializer = ({ children, isAuthenticated }) => {
         {/* Bottom Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
 
-        <style jsx={CSSMathValue.toString()}>{`
+        <style jsx>{`
           @keyframes brand-entrance {
             0% { opacity: 0; transform: translateY(30px) scale(0.9); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
@@ -252,7 +250,8 @@ const AppInitializer = ({ children, isAuthenticated }) => {
     );
   }
 
-  return children;
+    // Once initialized, render the app
+    return children;
 };
 
 export default AppInitializer;
