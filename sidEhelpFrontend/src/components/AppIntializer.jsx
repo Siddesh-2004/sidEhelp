@@ -151,7 +151,7 @@ const AppInitializer = ({ children, isAuthenticated }) => {
         {/* Bottom Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
 
-        <style jsx>{`
+        <style jsx={CSSMathValue.toString()}>{`
           @keyframes brand-entrance {
             0% { opacity: 0; transform: translateY(30px) scale(0.9); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
