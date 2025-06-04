@@ -22,7 +22,7 @@ function App() {
       <Provider store={store}>
         <AppInitializer isAuthenticated={isAuthenticated}>
           <div className="select-none">
-            <Navbar isAuthenticated={isAuthenticated} />
+            <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/feature" element={<Feature />} />
