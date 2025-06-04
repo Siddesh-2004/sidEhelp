@@ -34,7 +34,7 @@ const Contact = () => {
       {/* Main Content Container with sidebar spacing */}
       <div className="max-w-7xl mx-auto px-6 py-5">
         {/* Contact Section */}
-        <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-black rounded-2xl shadow-lg p-8 mb-8 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-black rounded-2xl shadow-lg p-4 mb-8 relative overflow-hidden">
           {/* Animated background elements */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
@@ -42,12 +42,12 @@ const Contact = () => {
           </div>
 
           <div className="relative z-10">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              Empowering Your Communication
+             <h2 className="text-3xl font-bold text-white mb-8 text-center">
+              Contact US!!!
             </h2>
-            <p className="text-blue-100 text-center mb-12 max-w-3xl mx-auto">
+           {/* <p className="text-blue-100 text-center mb-12 max-w-3xl mx-auto">
               sidEhelp provides multiple ways to connect with our team. Whether you need support, have questions, or want to collaborate, we're here to help you succeed.
-            </p>
+            </p> */}
 
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Contact Information */}

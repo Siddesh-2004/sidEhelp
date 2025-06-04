@@ -20,6 +20,12 @@ const generateAccessTokenAndRefreshToken = async (userId) => {
     throw new ApiError(500, 'Something went wrong while generating tokens');
   }
 };
+const options = {
+  httpOnly: true,
+  secure: true,      // 👈 required if SameSite=None
+  sameSite: 'None',  // 👈 required for cross-origin
+  maxAge: 24 * 60 * 60 * 1000 // example: 1 day
+};
 
 const registerUser = asyncHandler(async (req, res) => {
   console.log(req.body);
@@ -75,10 +81,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const loggedInUser = await User.findById(validatedUser._id).select(
     '-password -refreshToken',
   );
-  const options = {
-    httpOnly: true,
-    secure: true,
-  };
+  
   return res
     .status(200)
     .cookie('accessToken', accessToken, options)
@@ -100,10 +103,7 @@ const logoutUser = asyncHandler(async (req, res) => {
     },
     { new: true },
   );
-  const options = {
-    httpOnly: true,
-    secure: true,
-  };
+
   return res
     .status(200)
     .clearCookie('accessToken', options)
@@ -123,10 +123,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
             throw new ApiError(401, "Invalid refresh token");
         }
         const { accessToken, refreshToken } = await generateAccessTokenAndRefreshToken(user._id);
-        const options = {
-            httpOnly: true,
-            secure: true,
-        };
+
         return res
             .status(200)
             .cookie('accessToken', accessToken, options)
@@ -144,5 +141,53 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
         
     }
 });
+const checkAuthentication=asyncHandler(async(req,res)=>{
+  const userId=req.user._id;
+ if(!userId) throw new ApiError(401,"User not authenticated");
+  try{
+    
+    const user=await User.findById(userId).select('-password -refreshToken');
+    if(!user) throw new ApiError(404,"User not found");
+    return res.status(200).json(new apiResponses(200, user, "User authenticated successfully"));
+  }
+  // } catch (error) {
+  //   if(error.name === 'TokenExpiredError') {
+  //      const token =req.cookies?.refreshToken||req.body?.refreshAccessToken||req.headers?.Authorization?.replace("Bearer ", "");
+  //   console.log("Refresh Token:", token);
+  //   if(!token) throw new ApiError(404,"Refresh token not found")
+  //   try {
+  //       const decodedUser=jwt.verify(token, process.env.JWT_SECRET);
+  //       console.log("Decoded User:", decodedUser);
+  //       const user=await User.findById(decodedUser.id);
+  //       if(!user) throw new ApiError(404,"User not found");
+  //       if(user.refreshToken !== token) {
+  //           throw new ApiError(401, "Invalid refresh token");
+  //       }
+  //       const { accessToken, refreshToken } = await generateAccessTokenAndRefreshToken(user._id);
 
-export { registerUser, loginUser, logoutUser, refreshAccessToken };
+  //       return res
+  //           .status(200)
+  //           .cookie('accessToken', accessToken, options)
+  //           .cookie('refreshToken', refreshToken, options)
+  //           .json(
+  //               new apiResponses(
+  //                   200,
+  //                   { accessToken, refreshToken },
+  //                   'Tokens refreshed successfully, User authenticated successfully',
+  //               ),
+  //           );
+  //   } catch (error) {
+  //       console.error('Error refreshing access token:', error);
+  //       throw new ApiError(500, error.message||'Something went wrong while refreshing tokens');
+        
+  //   }
+     
+  //   }
+  // }
+  catch(error) {
+    console.error('Error checking authentication:', error);
+    throw new ApiError(500, error.message || 'Something went wrong while checking authentication');
+  }
+})
+
+export { registerUser, loginUser, logoutUser, refreshAccessToken, checkAuthentication };
